@@ -1,0 +1,23 @@
+#!/bin/bash 
+
+# Linux Shell Scripting - How to check if a program is installed or not in Linux.
+
+# Method 1:
+
+#MY_SOFT=clementine
+# Initial Check:
+#[ ! -x "$(which $MY_SOFT)" ] && echo $MY_SOFT" NO Está instalado" && exit 0
+
+[ ! -x "$(which $MY_SOFT)" ] && echo $MY_SOFT" No Está instalado!!!!";sudo apt-get install $MY_SOFT -y
+echo "Instalación finalizada!"
+
+
+# Method 2:
+
+PROGRAM=clementine
+if ! [ -x "$(command -v $PROGRAM)" ]; then
+  echo 'Error:' $PROGRAM 'is not installed.' >&2
+  sudo apt-get install $PROGRAM -y
+  echo "Instalación finalizada en el IF!"
+  #exit 1
+fi
